@@ -26,7 +26,7 @@ Unsuccessful operations will be returned with the appropriate HTTP status codes 
 
 Error messages will be translated and human readable. They will be constructed with the understanding that they can and will be displayed to computer illiterate users.
 
-API endpoints on an apex will follow this format: `DOMAIN/api/VERSION/ENDPOINT`
+API endpoints on an apex domain will follow this format: `DOMAIN/api/VERSION/ENDPOINT`
 
 API endpoints on an API subdomain will follow this format: `api.DOMAIN/VERSION/ENDPOINT`
 
