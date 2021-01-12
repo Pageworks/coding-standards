@@ -16,6 +16,14 @@
       {
           "label": "UX Documents",
           "url": "https://ux.page.works/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Pageworks"
+      },
+      {
+        "label": "Contact",
+        "url": "mailto:web@page.works"
       }
     ]
   }
