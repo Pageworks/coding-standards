@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Coding Standards - Services</title>
+        <title>Coding Standards - Views</title>
         <meta name="description" content="Pageworks coding standards reference documentation. Updated 2021-01-12.">
         <link rel="icon" href="/favicon.ico">
 
@@ -1106,26 +1106,18 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
     <body>
         <main>
             <aside><nav><a href="/" class="project-name">Coding Standards</a><a href="https://www.page.works/"><span>Pageworks</span></a><a href="https://github.com/Pageworks"><span>GitHub</span></a><a href="mailto:web@page.works"><span>Contact</span></a><header>Documents</header><a href="/controllers" data-slug="/controllers"><span>controllers</span></a><a href="/craft-template-variables" data-slug="/craft-template-variables"><span>craft template variables</span></a><a href="/services" data-slug="/services"><span>services</span></a><a href="/twig" data-slug="/twig"><span>twig</span></a><a href="/views" data-slug="/views"><span>views</span></a></nav></aside>
-            <article><h1 id="services">Services</h1>
-<p>Service functions:</p>
+            <article><h1 id="views">Views</h1>
+<p>Views are allowed to do the following:</p>
 <ul>
-<li>Functions will declare their return types.</li>
-<li>Function variables will be typed.</li>
-<li>Functions will avoid accepting booleans whenever possible.</li>
-<li>Only one business logic action will be performed per function.</li>
-<li>Functions will be assorted into unique services based upon their business logic.</li>
-<li>Functions will have descriptive names.</li>
+<li>Parse URI parameters.</li>
+<li>Perform database queries.</li>
+<li>Call service functions.</li>
 </ul>
-<p>If a function must intake a <code>boolean</code> you should <strong>not</strong> pass a raw value, instead create a variable.</p>
-<pre><code class="php language-php">// Incorrect
-$this-&gt;saveEntry($entry, true);
-
-// Correct
-$doValidation = true;
-$this-&gt;saveEntry($entry, $doValidation);
-</code></pre>
-<h2 id="whycreatevariables">Why create variables?</h2>
-<p>When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable.</p></article>
+<p>Views are <strong>not allowed</strong> to do the following:</p>
+<ul>
+<li>Perform business logic.</li>
+<li>Perform custom sorting operations.</li>
+</ul></article>
         </main>
     </body>
 </html>
