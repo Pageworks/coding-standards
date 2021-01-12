@@ -9,7 +9,7 @@
     "gh-pages": "^3.1.0"
   },
   "devDocs": {
-    "name": "Pageworks Coding Standards",
+    "name": "Coding Standards",
     "description": "Pageworks coding standards reference documentation. Updated 2021-01-12.",
     "links": [
       {
