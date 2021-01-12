@@ -1,6 +1,6 @@
 # Coding Standards
 
-The purpose of this document is not to force developers to comply with opinionated personal taste such as the placement of curly braces, tabs vs spaces, indent sizing, or other minor tedious coding ideologies. Put simply, the goal is to provide a generalized overview of how to write clean organized and optimized for Test Driven Development (TDD).
+The purpose of this document is not to force developers to comply with opinionated personal taste such as the placement of curly braces, tabs vs spaces, indent sizing, or other minor tedious coding ideologies. Put simply, the goal is to provide a generalized overview of how to write clean organized and optimized code for Test Driven Development (TDD).
 
 ## Why does this matter?
 
