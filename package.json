@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "docs": "docs"
+  },
+  "dependencies": {
+    "@codewithkyle/dev-docs": "^0.2.0"
+  },
+  "devDocs": {
+    "name": "Coding Standards",
+    "description": "Pageworks coding standards. Updated 2021-01-12."
+  }
+}
