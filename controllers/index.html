@@ -1129,7 +1129,57 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 <p>Unsuccessful operations will be returned with the appropriate HTTP status codes (<a href="https://www.steveschoger.com/status-code-poster/img/status-code.png">status code references</a>).</p>
 <p>Error messages will be translated and human readable. They will be constructed with the understanding that they can and will be displayed to computer illiterate users.</p>
 <p>API endpoints on an apex domain will follow this format: <code>DOMAIN/api/VERSION/ENDPOINT</code></p>
-<p>API endpoints on an API subdomain will follow this format: <code>api.DOMAIN/VERSION/ENDPOINT</code></p></article>
+<p>API endpoints on an API subdomain will follow this format: <code>api.DOMAIN/VERSION/ENDPOINT</code></p>
+<h3 id="examplecontroller">Example Controller</h3>
+<pre><code class="php language-php">// Example endpoint: api/v1/products/&lt;id:\d+&gt;
+function exampleControllerAction(int $id)
+{
+    $response = [
+        "success" =&gt; false,
+        "data" =&gt; null,
+        "error" =&gt; null,
+    ];
+
+    $this-&gt;requireAcceptsJson();
+    $method = $this-&gt;getRequestMethod();
+    $data = $this-&gt;getRequestBody();
+    $user = $this-&gt;getUser();
+
+    switch ($method)
+    {
+        case "POST":
+            if ($user-&gt;can("products:update"))
+            {
+                $response = ProductServiceClass-&gt;updateProductById($id, $data);
+            }
+            else
+            {
+                $this-&gt;setResponseStatus(401);
+                $respose["error"] = "You do not have permission to update this product.";
+            }
+            break;
+        case "DELETE":
+            if ($user-&gt;can("products:delete"))
+            {
+                $response = ProductServiceClass-&gt;deleteProductById($id);
+            }
+            else
+            {
+                $this-&gt;setResponseStatus(401);
+                $respose["error"] = "You do not have permission to delete this product.";
+            }
+            break;
+        case "GET":
+            $response = ProductServiceClass-&gt;getProductById($id);
+            break;
+        default:
+            $respose["error"] = "Invalid method type: " . $method;
+            break;
+    }
+
+    $this-&gt;respondAsJson($response);
+}
+</code></pre></article>
         </main>
     </body>
 </html>
