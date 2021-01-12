@@ -75,6 +75,7 @@ function exampleControllerAction(int $id)
 			$response = ProductServiceClass->getProductById($id);
 			break;
 		default:
+			$this->setResponseStatus(405);
 			$respose["error"] = "Invalid method type: " . $method;
 			break;
 	}
