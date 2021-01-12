@@ -2,15 +2,15 @@
 
 Controllers are allowed to the the following:
 
-1. Handle request types (GET, PUT, POST, etc).
-1. Validate request headers.
-1. Validate user permissions.
-1. Call service functions.
-1. Respond to requests.
+- Handle request types (GET, PUT, POST, etc).
+- Validate request headers.
+- Validate user permissions.
+- Call service functions.
+- Respond to requests.
 
 Controllers are **not allowed** to do the following:
 
-1. Perform business logic.
+- Perform business logic.
 
 Controllers returning JSON will respond with the following pattern:
 
