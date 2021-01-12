@@ -1173,11 +1173,12 @@ function exampleControllerAction(int $id)
             $response = ProductServiceClass-&gt;getProductById($id);
             break;
         default:
+            $this-&gt;setResponseStatus(405);
             $respose["error"] = "Invalid method type: " . $method;
             break;
     }
 
-    $this-&gt;respondAsJson($response);
+    return $this-&gt;respondAsJson($response);
 }
 </code></pre></article>
         </main>
