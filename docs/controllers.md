@@ -80,6 +80,6 @@ function exampleControllerAction(int $id)
 			break;
 	}
 
-	$this->respondAsJson($response);
+	return $this->respondAsJson($response);
 }
 ```
