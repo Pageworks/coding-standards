@@ -7,6 +7,16 @@
   },
   "devDocs": {
     "name": "Coding Standards",
-    "description": "Coding standards reference document. Updated 2021-01-12."
+    "description": "Coding standards reference document. Updated 2021-01-12.",
+    "links": [
+      {
+          "label": "Pageworks",
+          "url": "https://www.page.works/"
+      },
+      {
+          "label": "UX Documents",
+          "url": "https://ux.page.works/"
+      }
+    ]
   }
 }
