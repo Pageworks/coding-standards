@@ -1,7 +1,7 @@
 {
   "scripts": {
     "docs": "docs",
-    "predeploy": "docs -o ./public",
+    "predeploy": "docs -o ./public -c ./CNAME -f ./favicon.ico",
     "deploy": "node ./build/deploy.js"
   },
   "dependencies": {
