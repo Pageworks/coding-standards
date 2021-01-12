@@ -12,3 +12,4 @@ Contained within the list below are the sources of which this document was compo
 
 - [Official Twig Coding Standards](https://twig.symfony.com/doc/3.x/coding_standards.html)
 - [Clean Code by Bob Martin](https://youtube.com/playlist?list=PLmmYSbUCWJ4x1GO839azG_BBw8rkh-zOj)
+- [Pragmatic Programmer: Your Journey To Mastery](https://www.amazon.com/dp/0135957052/ref=cm_sw_em_r_mt_dp_pqE.FbB8JTC68)

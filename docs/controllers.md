@@ -17,7 +17,7 @@ Controllers returning JSON will respond with the following pattern:
 ```typescript
 interface {
 	success: boolean
-	data: number|boolean|string|Array<any>|object
+	data: number|boolean|string|Array<any>|object|null
 	error: null|string
 }
 ```
