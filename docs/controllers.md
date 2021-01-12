@@ -30,3 +30,55 @@ API endpoints on an apex domain will follow this format: `DOMAIN/api/VERSION/END
 
 API endpoints on an API subdomain will follow this format: `api.DOMAIN/VERSION/ENDPOINT`
 
+### Example Controller 
+
+```php
+// Example endpoint: api/v1/products/<id:\d+>
+function exampleControllerAction(int $id)
+{
+	$response = [
+		"success" => false,
+		"data" => null,
+		"error" => null,
+	];
+
+	$this->requireAcceptsJson();
+	$method = $this->getRequestMethod();
+	$data = $this->getRequestBody();
+	$user = $this->getUser();
+
+	switch ($method)
+	{
+		case "POST":
+			if ($user->can("products:update"))
+			{
+				$response = ProductServiceClass->updateProductById($id, $data);
+			}
+			else
+			{
+				$this->setResponseStatus(401);
+				$respose["error"] = "You do not have permission to update this product.";
+			}
+			break;
+		case "DELETE":
+			if ($user->can("products:delete"))
+			{
+				$response = ProductServiceClass->deleteProductById($id);
+			}
+			else
+			{
+				$this->setResponseStatus(401);
+				$respose["error"] = "You do not have permission to delete this product.";
+			}
+			break;
+		case "GET":
+			$response = ProductServiceClass->getProductById($id);
+			break;
+		default:
+			$respose["error"] = "Invalid method type: " . $method;
+			break;
+	}
+
+	$this->respondAsJson($response);
+}
+```
