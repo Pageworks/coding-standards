@@ -1,10 +1,10 @@
 # Coding Standards
 
-The purpose of this document is not to force developers to comply with opinionated personal taste such as the placement of curly braces, tabs vs spaces, indent sizing, or other minor tedious coding ideologies. Put simply, the goal is to provide a generalized overview of how to write clean organized code optimized for Test Driven Development (TDD).
+The purpose of this document is not to force developers to comply with opinionated personal taste such as the placement of curly braces, tabs vs spaces, indent sizing, or other minor tedious coding ideologies. Put simply, the goal is to provide a generalized overview of how to write clean organized and optimized for Test Driven Development (TDD).
 
 ## Why does this matter?
 
-In order to perform TDD we must first standardazie the way we write our code. Testable pieces of code must follow the uniformal patterns setforth within this coding standards document.
+In order to perform TDD we must first standardize the way we write our code. Testable pieces of code must follow the patterns setforth within this coding standards document.
 
 ## References
 

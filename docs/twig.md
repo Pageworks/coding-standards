@@ -1,6 +1,6 @@
-# Twig Coding Standards
+# Twig
 
-These coding standards are based upon the [offical Twig coding standards document](https://twig.symfony.com/doc/3.x/coding_standards.html).
+These coding standards are based upon the [official Twig coding standards document](https://twig.symfony.com/doc/3.x/coding_standards.html).
 
 Put one (and only one) space after the start of a delimiter and before the end of a delimiter:
 

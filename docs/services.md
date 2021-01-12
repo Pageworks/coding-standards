@@ -22,4 +22,4 @@ $this->saveEntry($entry, $doValidation);
 
 ## Why create variables?
 
-When authoring code you fully understand what the boolean variable does, however, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developer to search out function when trying to understand what a boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable.
+When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable.
