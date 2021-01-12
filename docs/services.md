@@ -31,8 +31,27 @@ $this->saveEntry($entry, $doValidation);
 
 When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable.
 
-## Services Example
+## Example
 
 ```php
+private function getFileContents(string $path) : string
+{
+    $output = "";
+    if (file_exists($path))
+    {
+        $output = file_get_contents($path);
+    }
+    return $output;
+}
 
+public function getCriticalCss(array $files) : string
+{
+    $output = "";
+    foreach ($files as $file)
+    {
+        $path = $_SERVER["DOCUMENT_ROOT"] . "/assets/" . rtrim($file, ".css") . ".css";
+        $output .= $this->getFileContents($path);
+    }
+    return $output;
+}
 ```
