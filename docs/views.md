@@ -2,7 +2,7 @@
 
 Views are allowed to do the following:
 
-- Parse URI parameters.
+- Parse URL parameters.
 - Perform database queries.
 - Call service functions.
 
