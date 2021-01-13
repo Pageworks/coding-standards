@@ -1,6 +1,6 @@
-# Services
+# Functions
 
-Service functions:
+Functions will always:
 
 - Functions will only do one thing.
     - You will know a function is only doing one thing when you cannot possibly extract another meaningful function from within it.

@@ -30,7 +30,7 @@ API endpoints on an apex domain will follow this format: `DOMAIN/api/VERSION/END
 
 API endpoints on an API subdomain will follow this format: `api.DOMAIN/VERSION/ENDPOINT`
 
-### Example Controller 
+### Example 
 
 ```php
 // Example endpoint: api/v1/products/<id:\d+>
