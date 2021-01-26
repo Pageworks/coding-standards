@@ -1134,15 +1134,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
     {% if cart.paymentCurrency != 'USD' %}
         {% set doConvert = true %}
     {% endif %}
-    {% set monetaryValue = subtotal %}
-    {% if monetaryValue|split('')[0] == '</article>
-        </main>
-    </body>
-</html>
- %}
-        {% set monetaryValue = "US" ~ monetaryValue %}
-    {% endif %}
-    &lt;span&gt;{{ monetaryValue }}&lt;/span&gt;
+    &lt;span&gt;{{ subtotal }}&lt;/span&gt;
 {% endif %}
 
 {# Correct #}
