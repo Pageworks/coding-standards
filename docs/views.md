@@ -29,11 +29,7 @@ Views are **not allowed** to do the following:
     {% if cart.paymentCurrency != 'USD' %}
         {% set doConvert = true %}
     {% endif %}
-    {% set monetaryValue = subtotal %}
-    {% if monetaryValue|split('')[0] == '$' %}
-        {% set monetaryValue = "US" ~ monetaryValue %}
-    {% endif %}
-    <span>{{ monetaryValue }}</span>
+    <span>{{ subtotal }}</span>
 {% endif %}
 
 {# Correct #}
