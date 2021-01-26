@@ -39,6 +39,6 @@ Views are **not allowed** to do the following:
 {# Correct #}
 {% if not cart.isEmpty %}
     {% set subtotal = cart.getSubtotal() %}
-    <span>{{ monetaryValue }}</span>
+    <span>{{ subtotal }}</span>
 {% endif %}
 ```
