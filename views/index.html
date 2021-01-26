@@ -1109,15 +1109,48 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
             <article><h1 id="views">Views</h1>
 <p>Views are allowed to do the following:</p>
 <ul>
-<li>Parse URL parameters.</li>
-<li>Perform database queries.</li>
 <li>Call service functions.</li>
 </ul>
 <p>Views are <strong>not allowed</strong> to do the following:</p>
 <ul>
 <li>Perform business logic.</li>
-<li>Perform custom sorting operations.</li>
-</ul></article>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code class="twig language-twig">{# Incorrect #}
+{% if not cart.isEmpty %}
+    {% set subtotal = 0 %}
+    {% for lineItem in lineItems %}
+        {% set discount = cart.getSubscriptionDiscount(lineItem) %}
+        {% if discount %}
+            {% set subtotal = subtotal + ((lineItem.price - (lineItem.price * discount)) * lineItem.qty) %}
+        {% elseif lineItem.onSale %}
+            {% set subtotal = subtotal + (lineItem.salePrice * lineItem.qty) %}
+        {% else %}
+            {% set subtotal = subtotal + (lineItem.price * lineItem.qty) %}
+        {% endif %}
+    {% endfor %}
+    {% set subtotal = subtotal|round(2) %}
+    {% set doConvert = false %}
+    {% if cart.paymentCurrency != 'USD' %}
+        {% set doConvert = true %}
+    {% endif %}
+    {% set monetaryValue = subtotal %}
+    {% if monetaryValue|split('')[0] == '</article>
+        </main>
+    </body>
+</html>
+ %}
+        {% set monetaryValue = "US" ~ monetaryValue %}
+    {% endif %}
+    &lt;span&gt;{{ monetaryValue }}&lt;/span&gt;
+{% endif %}
+
+{# Correct #}
+{% if not cart.isEmpty %}
+    {% set subtotal = cart.getSubtotal() %}
+    &lt;span&gt;{{ subtotal }}&lt;/span&gt;
+{% endif %}
+</code></pre></article>
         </main>
     </body>
 </html>
