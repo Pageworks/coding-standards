@@ -79,19 +79,19 @@ $entry->setFieldValues($fields);
 
 // Better
 $params = $request->getBodyParams();
-$fields = $this->convertFieldValueToArray($params, ["productGroup", "laminate", "score"]);
+$fields = $this->convertValuesToArrays($params, ["productGroup", "laminate", "score"]);
 $entry->setFieldValues($fields);
 
-private function convertFieldValueToArray(array $data, mixed $keys): array
+private function convertValuesToArrays(array $data, mixed $keys): array
 {
     if (is_array($keys)){
         foreach ($keys as $key){
-            if (isset($data[$key]) && !is_array($data[$key])){
+            if (isset($data[$key])){
                 $data[$key] = (array)$data[$key];
             }
         }
     } else {
-        if (isset($data[$key]) && !is_array($data[$key])){
+        if (isset($data[$key])){
             $data[$key] = (array)$data[$key];
         }
     }
