@@ -19,19 +19,32 @@ Functions will always:
 If a function must intake a raw value create a variable instead.
 
 ```php
-// Incorrect
+// Poor
 $this->saveEntry($entry, true);
 
-// Correct
+// Better
 $doValidation = true;
 $this->saveEntry($entry, $doValidation);
+
+// Even Better
+$this->saveAndValidateEntry($entry);
+$this->saveEntry($entry);
+
+// Best
+if ($entry->validate()){
+    $entry->save();
+}
 ```
 
 ## Why create variables?
 
 When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable.
 
-## Example
+Although the *"best"* solution would be to provide a robust set of tiny functions that don't use parameters and have highly descriptive names.
+
+## Examples
+
+### Example One
 
 ```php
 private function getFileContents(string $path) : string
@@ -53,5 +66,37 @@ public function getCriticalCss(array $files) : string
         $output .= $this->getFileContents($path);
     }
     return $output;
+}
+```
+
+### Example Two
+
+```php
+// Poor
+$params = $request->getBodyParams();
+$fields = $this->setParamAsArray($params, "productGroup");
+$fields = $this->setParamAsArray($fields, "laminate");
+$fields = $this->setParamAsArray($fields, "score");
+$entry->setFieldValues($fields);
+
+// Better
+$params = $request->getBodyParams();
+$fields = $this->convertFieldValuesToArrays($params, ["productGroup", "laminate", "score"]);
+$entry->setFieldValues($fields);
+
+private function convertFieldValuesToArrays(array $data, mixed $keys): array
+{
+    if (is_array($keys)){
+        foreach ($keys as $key){
+            if (isset($data[$key]) && !is_array($data[$key])){
+                $data[$key] = (array)$data[$key];
+            }
+        }
+    } else {
+        if (isset($data[$key]) && !is_array($data[$key])){
+            $data[$key] = (array)$data[$key];
+        }
+    }
+    return $data;
 }
 ```
