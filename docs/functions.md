@@ -38,9 +38,7 @@ if ($entry->validate()){
 
 ## Why create variables?
 
-When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable.
-
-Although the *"best"* solution would be to provide a robust set of tiny functions that don't use parameters and have highly descriptive names.
+When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable. Although the *"best"* solution would be to provide a robust set of tiny functions that don't use parameters and have highly descriptive names.
 
 ## Examples
 
