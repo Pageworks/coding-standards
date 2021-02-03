@@ -84,13 +84,8 @@ $entry->setFieldValues($fields);
 
 private function convertValuesToArrays(array $data, mixed $keys): array
 {
-    if (is_array($keys)){
-        foreach ($keys as $key){
-            if (isset($data[$key])){
-                $data[$key] = (array)$data[$key];
-            }
-        }
-    } else {
+    $keys = (array)$keys;
+    foreach ($keys as $key){
         if (isset($data[$key])){
             $data[$key] = (array)$data[$key];
         }
