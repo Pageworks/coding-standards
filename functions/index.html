@@ -1124,16 +1124,26 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 <li>Comments will only be used as a last resort. Descriptive variable and function names are preferred.</li>
 </ul>
 <p>If a function must intake a raw value create a variable instead.</p>
-<pre><code class="php language-php">// Incorrect
+<pre><code class="php language-php">// Poor
 $this-&gt;saveEntry($entry, true);
 
-// Correct
+// Better
 $doValidation = true;
 $this-&gt;saveEntry($entry, $doValidation);
+
+// Even Better
+$this-&gt;saveAndValidateEntry($entry);
+$this-&gt;saveEntry($entry);
+
+// Best
+if ($entry-&gt;validate()){
+    $entry-&gt;save();
+}
 </code></pre>
 <h2 id="whycreatevariables">Why create variables?</h2>
-<p>When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable.</p>
-<h2 id="example">Example</h2>
+<p>When authoring code you fully understand what the boolean variable does. However, when returning to code several months later or trying to understand other developer's code a raw boolean variable can be confusing and forces developers to search out the function when trying to understand what the boolean does. Code readability is more important than the negligible performance hit of declaring an extra variable. Although the <em>"best"</em> solution would be to provide a robust set of tiny functions that don't use parameters and have highly descriptive names.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="exampleone">Example One</h3>
 <pre><code class="php language-php">private function getFileContents(string $path) : string
 {
     $output = "";
@@ -1153,6 +1163,30 @@ public function getCriticalCss(array $files) : string
         $output .= $this-&gt;getFileContents($path);
     }
     return $output;
+}
+</code></pre>
+<h3 id="exampletwo">Example Two</h3>
+<pre><code class="php language-php">// Poor
+$params = $request-&gt;getBodyParams();
+$fields = $this-&gt;setParamAsArray($params, "productGroup");
+$fields = $this-&gt;setParamAsArray($fields, "laminate");
+$fields = $this-&gt;setParamAsArray($fields, "score");
+$entry-&gt;setFieldValues($fields);
+
+// Better
+$params = $request-&gt;getBodyParams();
+$fields = $this-&gt;convertValuesToArrays($params, ["productGroup", "laminate", "score"]);
+$entry-&gt;setFieldValues($fields);
+
+private function convertValuesToArrays(array $data, mixed $keys): array
+{
+    $keys = (array)$keys;
+    foreach ($keys as $key){
+        if (isset($data[$key])){
+            $data[$key] = (array)$data[$key];
+        }
+    }
+    return $data;
 }
 </code></pre></article>
         </main>
